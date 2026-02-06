@@ -11,6 +11,9 @@ on:
       - "**/*.datasource"
       - "**/*.pipe"
 
+env:
+  TINYBIRD_TOKEN: ${{ secrets.TINYBIRD_TOKEN }}
+
 jobs:
   tinybird:
     runs-on: ubuntu-latest
@@ -26,7 +29,4 @@ jobs:
           node-version: 22.x
           cache: 'pnpm'
       - run: pnpm install --frozen-lockfile
-      - run: pnpm run tinybird:build
       - run: pnpm run tinybird:deploy
-        env:
-          TINYBIRD_TOKEN: ${{ secrets.TINYBIRD_TOKEN }}

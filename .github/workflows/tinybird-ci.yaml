@@ -6,6 +6,7 @@ on:
       - "tinybird.json"
       - "src/tinybird/**"
       - "tinybird/**"
+      - "lib/tinybird.ts"
       - "**/*.datasource"
       - "**/*.pipe"
 
