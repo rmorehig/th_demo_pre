@@ -51,7 +51,7 @@ export const topPages = defineEndpoint("top_pages", {
   params: {
     start_date: p.dateTime().describe("Start of date range"),
     end_date: p.dateTime().describe("End of date range"),
-    limit: p.int32().optional(5).describe("Number of results"),
+    limit: p.int32().optional(15).describe("Number of results"),
   },
   nodes: [
     node({
@@ -65,7 +65,7 @@ export const topPages = defineEndpoint("top_pages", {
           AND timestamp <= {{DateTime(end_date)}}
         GROUP BY pathname
         ORDER BY views DESC
-        LIMIT {{Int32(limit, 5)}}
+        LIMIT {{Int32(limit, 15)}}
       `,
     }),
   ],
