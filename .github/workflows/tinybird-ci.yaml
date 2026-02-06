@@ -12,6 +12,9 @@ on:
 jobs:
   tinybird:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: .
     outputs:
       branch_name: ${{ steps.preview.outputs.branch_name }}
       branch_id: ${{ steps.preview.outputs.branch_id }}
