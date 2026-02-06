@@ -38,12 +38,4 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm run tinybird:build
       - name: Create preview branch
-        id: preview
-        run: |
-          result=$(pnpm run tinybird:preview --json 2>&1)
-          echo "$result" | jq -r '"branch_name=" + .branch.name' >> $GITHUB_OUTPUT
-          echo "$result" | jq -r '"branch_id=" + .branch.id' >> $GITHUB_OUTPUT
-          token=$(echo "$result" | jq -r '.branch.token')
-          echo "::add-mask::$token"
-          echo "branch_token=$token" >> $GITHUB_OUTPUT
-          echo "$result" | jq -r '"branch_url=" + .branch.url' >> $GITHUB_OUTPUT
+        run: pnpm run tinybird:preview 
